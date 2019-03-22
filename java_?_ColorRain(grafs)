@@ -1,0 +1,47 @@
+package eolymp.tasks;
+
+import java.io.IOException;
+import java.util.Scanner;
+import java.io.FileReader;
+import java.io.FileWriter;
+
+public class Main {
+    FileReader input;
+    FileWriter output;
+    Scanner in;
+    public static void main(String[] args) throws IOException {
+	new Main().run();
+    }
+
+    private void run() throws IOException {
+        input = new FileReader("input06.txt");
+        output = new FileWriter("output.txt");
+        in = new Scanner(input);
+        int n = in.nextInt();
+        int[][] arr = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                arr[i][j] = in.nextInt();
+               // System.out.print( arr[i][j]+" ");
+            }
+            //System.out.println();
+        }
+       // System.out.println("---------------");
+        int[] most = new int[n];
+        for (int i = 0; i < n; i++) {
+            most[i] = in.nextInt();
+           // System.out.print(most[i]+" ");
+        }
+        int k = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                if (arr[i][j]==1){
+                    if (most[i]!=most[j]) k++;
+                }
+            }
+        }
+        output.write(String.valueOf(k));
+        input.close();
+        output.close();
+    }
+}
