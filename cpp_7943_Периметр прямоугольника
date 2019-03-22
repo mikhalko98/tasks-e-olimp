@@ -1,0 +1,11 @@
+int main()
+{
+    FILE *fread = fopen("input.txt", "r");
+    FILE *fwrite = fopen("output.txt", "w");
+    int a, b;
+    fscanf(fread,"%d", &a);
+    fscanf(fread,"%d", &b);
+    fprintf(fwrite, "%d", (a+b)*2);
+
+    return 0;
+}
