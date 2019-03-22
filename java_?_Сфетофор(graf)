@@ -1,0 +1,51 @@
+package eolymp.tasks;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Main {
+    FileReader input;
+    Scanner in;
+    FileWriter output;
+    int[][] arr;
+    public static final int MAX = 110;
+    public static void main(String[] args) throws IOException {
+	    new Main().run();
+    }
+
+    private void run() throws IOException {
+        input = new FileReader("input.txt");
+        in = new Scanner(input);
+        int n = in.nextInt();
+        int m = in.nextInt();
+        arr = new int[MAX][MAX];
+        while (in.hasNextInt()){
+                int a = in.nextInt();
+                int b = in.nextInt();
+                arr[a][b] = arr[b][a] = 1;}
+        ArrayList<Integer> list = count(n);
+        output = new FileWriter("output.txt");
+        for (int i = 0; i < n; i++) {
+            output.write(String .valueOf(list.get(i)) +" ");
+        }
+        input.close();
+        output.close();
+    }
+
+    private ArrayList<Integer> count(int n) {
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
+            int k = 0;
+            for (int j = 1; j <= n; j++) {
+                if (arr[i][j]!=0){
+                    k++;
+                }
+            }
+            list.add(k);
+        }
+        return list;
+    }
+}
