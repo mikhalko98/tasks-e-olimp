@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Main {
+    Scanner in = new Scanner(System.in);
+
+    public static void main(String[] args) {
+	 new Main().run();
+    }
+
+    private void run() {
+        int n = in.nextInt();
+        int[][] mas = new int[n][n];
+        for(int i = 0 ; i < n ; i++) {
+            for(int j = 0 ; j < n ; j++){
+                mas[i][j] = in.nextInt();
+            }
+        }
+        int N, M;
+        N = in.nextInt();
+        M = in.nextInt();
+        for(int i = 0 ; i < N ; i++) {
+            for(int j = 0 ; j < M ; j++){
+                System.out.print(mas[i][j] +" ");
+            }
+            System.out.println();
+        }
+    }
+}
